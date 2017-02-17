@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+    "name": "VK Blacklist'",
+    "description": "Hide people from your feed",
+    "version": "2.0",
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "storage"
+    ],
+    "content_scripts": [
+        {
+            "matches": ["http://vk.com/*", "https://vk.com/*"],
+            "js": ["jquery.js", "hide.js"],
+            "run_at": "document_end",
+            "all_frames": true
+        }
+    ],
+
+    "browser_action": {
+        "default_title": "VK Blacklist",
+        "default_icon": "icon1.png",
+        "default_popup": "popup.html"
+    }
+}

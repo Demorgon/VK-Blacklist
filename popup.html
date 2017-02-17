@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>VK Blacklist</title>
+    <link rel="stylesheet" href="popup.css" />
+    <script src="popup.js"></script>
+    <!--    <script src="jquery.js"></script>-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+</head>
+
+<body>
+    <div class="title">
+        <div class="title_text_box">
+            <h1>Blocked users</h1>
+            <h2>Users whose comments are hidden</h2>
+        </div>
+    </div>
+    <div class="body">
+        <div class="list">
+            <div class="list_item">
+                <p id="show">rodan_20</p>
+                <i class="material-icons" id="delete_btn">close</i>
+            </div>
+        </div>
+        <div class="new_item">
+            <div class="input_item">
+                <input type="text" class="input" placeholder="another_one" name="name" id="name">
+                <button class="input_button">
+                    <h3 id="add_btn">BLOCK</h3>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="footer">
+        <div class="footer_item">
+            <p>Hide replies</p>
+            <label class="switch">
+                <input type="checkbox" id="replies_switch">
+                <div class="slider round"></div>
+            </label>
+        </div>
+    </div>
+</body>
+
+</html>
