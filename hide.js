@@ -66,7 +66,7 @@ function hideReplies() {
                         }
                         item.style.display = "none";
                     })
-                }, 50);
+                }, 1000);
             }
         })
 }

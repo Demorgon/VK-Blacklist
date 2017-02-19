@@ -1,20 +1,15 @@
-//window.onload = startHideBadboy();
 window.onload = function () {
     var add_btn = document.getElementById('add_btn');
-    var delete_btn = document.getElementById('delete_btn');
     var show_btn = document.getElementById('show_btn');
     var replies_switch = document.getElementById('replies_switch');
-    //    show_btn.addEventListener('click', showBadboy);
     add_btn.addEventListener('click', addBadboy);
-    delete_btn.addEventListener('click', deleteBadboy);
+    addListeners();
     replies_switch.addEventListener('click', repliesSwitch);
     switchSet();
     showBadboy();
 }
 
 var storage = chrome.storage.sync;
-//var add_btn = document.getElementById('add_btn');
-
 
 function addBadboy() {
     var linked;
@@ -30,26 +25,21 @@ function addBadboy() {
             }
 
             var text = document.getElementById('name').value;
-            alert("Added: " + text);
             linked.push(text);
             storage.set({
                 'linked': linked
             });
             showBadboy();
         })
-
-
 }
 
-function deleteBadboy() {
-    var text = document.getElementById('name').value;
+function deleteBadboy(name_attr) {
     var linked;
     storage.get('linked', function (data) {
         linked = data.linked;
         linked.forEach(function (item, i, linked) {
-            if (item == text) {
+            if (item == name_attr) {
                 linked.splice(i, 1);
-                alert("This good man will be visible again: " + text);
             }
         })
         chrome.storage.sync.set({
@@ -61,16 +51,49 @@ function deleteBadboy() {
 
 function showBadboy() {
     var linked;
-    var text = document.getElementById("show");
-    storage.get('linked', function (data) {
-        linked = data.linked;
-        text.innerHTML = "Mraz'es: ";
-        linked.forEach(function (item, i, linked) {
-            text.innerHTML += "*" +
-                item.toString() + "* ";
+
+    storage.get(
+        'linked',
+        function (data) {
+            linked = data.linked;
+
+            var container = document.getElementById('list_container');
+
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+
+            linked.forEach(function (item, i, linked) {
+                var container = document.getElementById("list_container");
+                var new_div = document.createElement("div");
+                var new_p = document.createElement("p");
+                var new_i = document.createElement("i");
+
+                new_p.innerHTML = item + "";
+                new_i.innerHTML = "close";
+                new_i.className = "material-icons";
+                //                new_i.id = "delete_btn";
+                new_i.setAttribute("name", item + "");
+                new_div.className = "list_item";
+
+                new_div.appendChild(new_p);
+                new_div.appendChild(new_i);
+                container.appendChild(new_div);
+            })
+            addListeners();
         })
-    });
 }
+
+function addListeners() {
+    var delete_btn = document.getElementsByClassName('material-icons');
+    for (var i = 0; i < delete_btn.length; i++) {
+        var some_btn = delete_btn.item(i);
+        some_btn.addEventListener('click', function () {
+            deleteBadboy(this.getAttribute("name"));
+        });
+    }
+}
+
 
 function switchSet() {
     var switchState;
