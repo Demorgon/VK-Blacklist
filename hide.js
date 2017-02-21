@@ -27,10 +27,9 @@ function hideBadboy() {
             item.style.display = "none";
         })
 
-        hideReplies();
-    }, 50);
 
-
+    }, 250);
+    hideReplies();
 }
 
 function hideReplies() {
@@ -66,7 +65,7 @@ function hideReplies() {
                         }
                         item.style.display = "none";
                     })
-                }, 1000);
+                }, 250);
             }
         })
 }

@@ -19,17 +19,25 @@ function addBadboy() {
         function (data) {
             if (data.linked == null) {
                 linked = [];
-                alert("Can't find.")
             } else {
                 linked = data.linked;
             }
 
             var text = document.getElementById('name').value;
-            linked.push(text);
-            storage.set({
-                'linked': linked
-            });
-            showBadboy();
+            if (text[0] === "/") {
+                linked.push(text);
+                storage.set({
+                    'linked': linked
+                });
+            } else {
+                text = "/" + text;
+                linked.push(text);
+                storage.set({
+                    'linked': linked
+                });
+            }
+
+            cleanBadboy();
         })
 }
 
@@ -47,6 +55,27 @@ function deleteBadboy(name_attr) {
         });
         showBadboy();
     });
+}
+
+function cleanBadboy() {
+    var linked, result;
+
+    storage.get('linked', function (data) {
+        linked = data.linked;
+
+        for (var i = 0; i < linked.length; i++)
+            for (var j = i + 1; j < linked.length; j++)
+                if (linked[i] == linked[j]) {
+                    linked.splice(j, 1);
+                    alert("This ID is already blocked!");
+                }
+        chrome.storage.sync.set({
+            'linked': linked
+        });
+        showBadboy();
+
+    });
+
 }
 
 function showBadboy() {
@@ -69,10 +98,10 @@ function showBadboy() {
                 var new_p = document.createElement("p");
                 var new_i = document.createElement("i");
 
-                new_p.innerHTML = item + "";
+
+                new_p.innerHTML = item.substr(1);
                 new_i.innerHTML = "close";
                 new_i.className = "material-icons";
-                //                new_i.id = "delete_btn";
                 new_i.setAttribute("name", item + "");
                 new_div.className = "list_item";
 

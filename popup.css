@@ -28,9 +28,15 @@ h2 {
 }
 
 h3 {
-    font-size: 14px;
-    color: #35999d;
+    font-size: 18px;
+    color: #0d92ce;
     font-weight: 400;
+    transition: 0.5s;
+}
+h3:hover {
+    transition: 0.5s;
+    color: #0053a5;
+
 }
 
 p {
@@ -118,13 +124,12 @@ button:focus {
 .title {
     height: 70px;
     width: auto;
-    background-color: #35999d;
+    background-color: #0d92ce;
 }
 
 .footer {
     height: 80px;
     width: auto;
-    /*    background-color: #5475F9;*/
     border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
 
@@ -136,7 +141,6 @@ button:focus {
     margin: 20px 5px 10px 5px;
     width: auto;
     max-height: 159px;
-    /*    background-color: aqua;*/
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -147,6 +151,7 @@ button:focus {
     height: 50px;
     background-color: #fff;
     border: 1px solid rgba(149, 152, 154, 0.25);
+    border-radius: 2px;
     margin-bottom: 3px;
     padding: 0 20px 0 30px;
     display: -moz-flex;
@@ -174,6 +179,7 @@ button:focus {
     height: 50px;
     background-color: #fff;
     border: 1px solid rgba(149, 152, 154, 0.25);
+    border-radius: 2px;
     margin: 7px 5px 20px 5px;
 }
 
@@ -198,7 +204,7 @@ button:focus {
 }
 
 .input_item {
-    margin: 0 15px 0 30px;
+    margin: 0 10px 0 30px;
     height: 100%;
     width: auto;
     display: -moz-flex;
@@ -220,6 +226,7 @@ button:focus {
     border: none;
     width: 45px;
     height: 36px;
+    text-align: center;
 }
 
 .footer_item {
@@ -250,7 +257,6 @@ button:focus {
 
 .switch input {
     display: none;
-    /*    width: 50px;*/
 }
 
 .slider {
@@ -279,13 +285,13 @@ button:focus {
 }
 
 input:checked + .slider {
-    background-color: #75bbbe;
+    background-color: #71badb;
 }
 
 input:checked + .slider:before {
     -webkit-transform: translateX(16px);
     transform: translateX(16px);
-    background-color: #35999d;
+    background-color: #0d92ce;
 }
 
 
