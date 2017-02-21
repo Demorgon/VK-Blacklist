@@ -26,8 +26,6 @@ function hideBadboy() {
             }
             item.style.display = "none";
         })
-
-
     }, 250);
     hideReplies();
 }

@@ -36,7 +36,6 @@ function addBadboy() {
                     'linked': linked
                 });
             }
-
             cleanBadboy();
         })
 }
@@ -67,15 +66,12 @@ function cleanBadboy() {
             for (var j = i + 1; j < linked.length; j++)
                 if (linked[i] == linked[j]) {
                     linked.splice(j, 1);
-                    alert("This ID is already blocked!");
                 }
         chrome.storage.sync.set({
             'linked': linked
         });
         showBadboy();
-
     });
-
 }
 
 function showBadboy() {
@@ -97,7 +93,6 @@ function showBadboy() {
                 var new_div = document.createElement("div");
                 var new_p = document.createElement("p");
                 var new_i = document.createElement("i");
-
 
                 new_p.innerHTML = item.substr(1);
                 new_i.innerHTML = "close";
